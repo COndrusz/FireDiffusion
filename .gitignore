@@ -1,0 +1,4 @@
+# Pycache 
+*__pycache__*
+*.egg-info*
+notebooks/

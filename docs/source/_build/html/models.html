@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Models &#8212; Fire Diff 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Datasets" href="datasets.html" />
+    <link rel="prev" title="Function API" href="index.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="datasets.html" title="Datasets"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Function API"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Fire Diff 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Models</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="models">
+<h1>Models<a class="headerlink" href="#models" title="Link to this heading">¶</a></h1>
+<section id="module-fireDiff.Models.unet">
+<span id="firediff-models-unet"></span><h2>fireDiff.Models.unet<a class="headerlink" href="#module-fireDiff.Models.unet" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.Bottleneck">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet.</span></span><span class="sig-name descname"><span class="pre">Bottleneck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embed_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet.Bottleneck" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A bottleneck layer with a convolutional block and multi-head attention,
+followed by a 1x1 convolution to reduce the number of channels.</p>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>embed_dim<span class="classifier">int, optional, default=128</span></dt><dd><p>The dimensionality of the embeddings used in the multi-head attention.</p>
+</dd>
+<dt>num_heads<span class="classifier">int, optional, default=8</span></dt><dd><p>The number of heads in the multi-head attention mechanism.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns:<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The output tensor after the bottleneck, with 128 channels and the
+same spatial dimensions as the input.</p>
+</dd>
+</dl>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.Bottleneck.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet.Bottleneck.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Forward pass through the bottleneck layer.</p>
+<section id="id1">
+<h4>Parameters:<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>x<span class="classifier">torch.Tensor</span></dt><dd><p>The input tensor of shape (batch_size, 64, height, width).</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h4>Returns:<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The output tensor of shape (batch_size, 128, height, width).</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.ConvBlock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet.</span></span><span class="sig-name descname"><span class="pre">ConvBlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet.ConvBlock" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A convolutional block that applies two convolutional layers with batch
+normalization and activation functions.</p>
+<section id="id3">
+<h3>Parameters:<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>in_channels<span class="classifier">int</span></dt><dd><p>The number of input channels for the convolutional layers.</p>
+</dd>
+<dt>out_channels<span class="classifier">int</span></dt><dd><p>The number of output channels for the convolutional layers.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h3>Returns:<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The output tensor after applying the convolutional block, with the
+same height and width as the input.</p>
+</dd>
+</dl>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.ConvBlock.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet.ConvBlock.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Forward pass through the convolutional block.</p>
+<section id="id5">
+<h4>Parameters:<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>x<span class="classifier">torch.Tensor</span></dt><dd><p>The input tensor of shape (batch_size, in_channels, height, width).</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h4>Returns:<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><dl class="simple">
+<dt>The output tensor of shape (batch_size, out_channels,</dt><dd><p>height, width).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.Decoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet.</span></span><span class="sig-name descname"><span class="pre">Decoder</span></span><a class="headerlink" href="#fireDiff.Models.unet.Decoder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>The decoder part of a U-Net, which upsamples the input using transposed
+convolutions and refines the features using convolutional blocks.</p>
+<section id="id7">
+<h3>Returns:<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The final output tensor after the decoder, with 1 channel and the
+same spatial dimensions as the original input.</p>
+</dd>
+</dl>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.Decoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enc_features</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet.Decoder.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Forward pass through the decoder.</p>
+<section id="id8">
+<h4>Parameters:<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>x<span class="classifier">torch.Tensor</span></dt><dd><p>The input tensor from the bottleneck layer of shape
+(batch_size, 128, height/8, width/8).</p>
+</dd>
+<dt>enc_features<span class="classifier">tuple</span></dt><dd><p>A tuple of feature maps from the encoder to be concatenated
+with the upsampled features at each step.</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h4>Returns:<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The output tensor of shape (batch_size, 1, height, width)
+after applying the final GELU activation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.Encoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet.</span></span><span class="sig-name descname"><span class="pre">Encoder</span></span><a class="headerlink" href="#fireDiff.Models.unet.Encoder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>The encoder part of a U-Net, which reduces the spatial dimensions
+of the input through convolutional blocks and max-pooling layers.</p>
+<section id="id10">
+<h3>Returns:<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>tuple :</dt><dd><p>A tuple containing:
+- The downsampled output tensor after the final pooling layer.
+- A tuple of feature maps from each convolutional block,
+to be used in the decoder for skip connections.</p>
+</dd>
+</dl>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.Encoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet.Encoder.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Forward pass through the encoder.</p>
+<section id="id11">
+<h4>Parameters:<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>x<span class="classifier">torch.Tensor</span></dt><dd><p>The input tensor of shape (batch_size, 1, height, width).</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h4>Returns:<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple :</dt><dd><p>A tuple containing:
+- The output tensor after the final pooling layer, of shape
+(batch_size, 64, height/8, width/8).
+- A tuple of tensors containing the output of each convolutional
+block before pooling, to be used in the decoder for skip
+connections.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.UNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet.</span></span><span class="sig-name descname"><span class="pre">UNet</span></span><a class="headerlink" href="#fireDiff.Models.unet.UNet" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A U-Net model combining an encoder, a bottleneck with an attention
+mechanism, and a decoder to produce a final output with the same
+spatial dimensions as the input.</p>
+<section id="id13">
+<h3>Returns:<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The final output tensor after passing through the U-Net, with
+1 channel and the same spatial dimensions as the input.</p>
+</dd>
+</dl>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet.UNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet.UNet.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Forward pass through the U-Net model.</p>
+<section id="id14">
+<h4>Parameters:<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>x<span class="classifier">torch.Tensor</span></dt><dd><p>The input tensor of shape (batch_size, 1, height, width).</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h4>Returns:<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The output tensor of shape (batch_size, 1, height, width)
+after passing through the entire U-Net.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="module-fireDiff.Models.unet_predictor">
+<span id="firediff-models-unet-predictor"></span><h2>fireDiff.Models.unet_predictor<a class="headerlink" href="#module-fireDiff.Models.unet_predictor" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.Bottleneck">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet_predictor.</span></span><span class="sig-name descname"><span class="pre">Bottleneck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embed_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet_predictor.Bottleneck" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.Bottleneck.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet_predictor.Bottleneck.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.ConvBlock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet_predictor.</span></span><span class="sig-name descname"><span class="pre">ConvBlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet_predictor.ConvBlock" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A convolutional block consisting of two convolutional layers, each
+followed by a ReLU activation. The block preserves the spatial dimensions
+of the input.</p>
+<section id="id16">
+<h3>Parameters:<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>in_channels<span class="classifier">int</span></dt><dd><p>The number of input channels for the convolutional layers.</p>
+</dd>
+<dt>out_channels<span class="classifier">int</span></dt><dd><p>The number of output channels for the convolutional layers.</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h3>Returns:<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>None</p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.ConvBlock.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet_predictor.ConvBlock.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.Decoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet_predictor.</span></span><span class="sig-name descname"><span class="pre">Decoder</span></span><a class="headerlink" href="#fireDiff.Models.unet_predictor.Decoder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.Decoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enc_features</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet_predictor.Decoder.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.Encoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet_predictor.</span></span><span class="sig-name descname"><span class="pre">Encoder</span></span><a class="headerlink" href="#fireDiff.Models.unet_predictor.Encoder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.Encoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet_predictor.Encoder.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.PredictorUNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.unet_predictor.</span></span><span class="sig-name descname"><span class="pre">PredictorUNet</span></span><a class="headerlink" href="#fireDiff.Models.unet_predictor.PredictorUNet" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.unet_predictor.PredictorUNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.unet_predictor.PredictorUNet.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="module-fireDiff.Models.diffusionmodel">
+<span id="firediff-models-diffusionmodel"></span><h2>fireDiff.Models.diffusionmodel<a class="headerlink" href="#module-fireDiff.Models.diffusionmodel" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.diffusionmodel.DiffusionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.diffusionmodel.</span></span><span class="sig-name descname"><span class="pre">DiffusionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.diffusionmodel.DiffusionModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A diffusion model that uses a base neural network model (e.g., UNet)
+to perform denoising and sampling tasks. The model can be trained using
+a specified noise schedule.</p>
+<section id="id18">
+<h3>Parameters:<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>model<span class="classifier">nn.Module</span></dt><dd><p>The base neural network model architecture (e.g., UNet).</p>
+</dd>
+<dt>lambda_start<span class="classifier">float, optional, default=1.0</span></dt><dd><p>The starting value for the lambda schedule.</p>
+</dd>
+<dt>lambda_end<span class="classifier">float, optional, default=0.0</span></dt><dd><p>The ending value for the lambda schedule.</p>
+</dd>
+<dt>device<span class="classifier">str, optional, default=’cuda’ if torch.cuda.is_available() else ‘cpu’ # noqa</span></dt><dd><p>The device to run the model on (‘cuda’ or ‘cpu’).</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h3>Returns:<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p>None</p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.diffusionmodel.DiffusionModel.heun_sampler">
+<span class="sig-name descname"><span class="pre">heun_sampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.diffusionmodel.DiffusionModel.heun_sampler" title="Link to this definition">¶</a></dt>
+<dd><p>Generates samples from the diffusion model using Heun’s method.</p>
+<section id="id20">
+<h4>Parameters:<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>x_t<span class="classifier">torch.Tensor</span></dt><dd><p>The input tensor representing the noisy data to be denoised.</p>
+</dd>
+<dt>num_steps<span class="classifier">int, optional, default=50</span></dt><dd><p>The number of sampling steps to perform.</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h4>Returns:<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The denoised output tensor generated by the model.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.diffusionmodel.DiffusionModel.load_model">
+<span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.diffusionmodel.DiffusionModel.load_model" title="Link to this definition">¶</a></dt>
+<dd><p>Loads the model’s state dictionary from a specified path.</p>
+<section id="id22">
+<h4>Parameters:<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>The file path from which to load the model’s state dictionary.</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h4>Returns:<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.diffusionmodel.DiffusionModel.save_model">
+<span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.diffusionmodel.DiffusionModel.save_model" title="Link to this definition">¶</a></dt>
+<dd><p>Saves the model’s state dictionary to a specified path.</p>
+<section id="id24">
+<h4>Parameters:<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>The file path where the model’s state dictionary will be saved.</p>
+</dd>
+</dl>
+</section>
+<section id="id25">
+<h4>Returns:<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.diffusionmodel.DiffusionModel.train_model">
+<span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.diffusionmodel.DiffusionModel.train_model" title="Link to this definition">¶</a></dt>
+<dd><p>Trains the diffusion model using the provided dataloader.</p>
+<section id="id26">
+<h4>Parameters:<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dataloader<span class="classifier">torch.utils.data.DataLoader</span></dt><dd><p>The dataloader providing batches of data for training.</p>
+</dd>
+<dt>train_steps<span class="classifier">int, optional, default=1000</span></dt><dd><p>The number of diffusion steps used in training.</p>
+</dd>
+<dt>epochs<span class="classifier">int, optional, default=50</span></dt><dd><p>The number of epochs for which to train the model.</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h4>Returns:<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h4>
+<p>None</p>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class" id="module-fireDiff.Models.deterministicmodel">
+<dt class="sig sig-object py" id="fireDiff.Models.deterministicmodel.PredictionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.deterministicmodel.</span></span><span class="sig-name descname"><span class="pre">PredictionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.deterministicmodel.PredictionModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A wrapper class for a neural network model that facilitates training,
+validation, and saving/loading model checkpoints. The model is designed
+to run on either a CPU or GPU.</p>
+<section id="id28">
+<h3>Parameters:<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>model<span class="classifier">nn.Module</span></dt><dd><p>The base model architecture (e.g., UNet).</p>
+</dd>
+<dt>device<span class="classifier">str, optional, default=’cuda’ if torch.cuda.is_available() else ‘cpu’ # noqa</span></dt><dd><p>The device to run the model on (‘cuda’ or ‘cpu’).</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h3>Returns:<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<p>None</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.deterministicmodel.PredictionModel.load_model">
+<span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.deterministicmodel.PredictionModel.load_model" title="Link to this definition">¶</a></dt>
+<dd><p>Loads the model’s state dictionary from a specified file.</p>
+<section id="id30">
+<h4>Parameters:<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>The file path from which to load the model’s state dictionary.</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h4>Returns:<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h4>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.deterministicmodel.PredictionModel.save_model">
+<span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.deterministicmodel.PredictionModel.save_model" title="Link to this definition">¶</a></dt>
+<dd><p>Saves the model’s state dictionary to a specified file.</p>
+<section id="id32">
+<h4>Parameters:<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>The file path where the model’s state dictionary will be saved.</p>
+</dd>
+</dl>
+</section>
+<section id="id33">
+<h4>Returns:<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h4>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.deterministicmodel.PredictionModel.train_model">
+<span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tdataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vdataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.deterministicmodel.PredictionModel.train_model" title="Link to this definition">¶</a></dt>
+<dd><p>Trains the model over a specified number of epochs, and evaluates
+it on a validation dataset after each epoch.</p>
+<section id="id34">
+<h4>Parameters:<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tdataloader<span class="classifier">torch.utils.data.DataLoader</span></dt><dd><p>The data loader providing the training data.</p>
+</dd>
+<dt>vdataloader<span class="classifier">torch.utils.data.DataLoader</span></dt><dd><p>The data loader providing the validation data.</p>
+</dd>
+<dt>epochs<span class="classifier">int, optional, default=50</span></dt><dd><p>The number of epochs to train the model.</p>
+</dd>
+</dl>
+</section>
+<section id="id35">
+<h4>Returns:<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A tuple containing two lists: the training loss and validation loss
+for each epoch.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.deterministicmodel.PredictionModel.train_step">
+<span class="sig-name descname"><span class="pre">train_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_loader</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.deterministicmodel.PredictionModel.train_step" title="Link to this definition">¶</a></dt>
+<dd><p>Performs a single training step, including forward pass, loss
+computation, and backpropagation for the entire dataset provided
+by the data loader.</p>
+<section id="id36">
+<h4>Parameters:<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>optimizer<span class="classifier">torch.optim.Optimizer</span></dt><dd><p>The optimizer used to update the model’s weights.</p>
+</dd>
+<dt>criterion<span class="classifier">nn.Module</span></dt><dd><p>The loss function used to compute the loss.</p>
+</dd>
+<dt>data_loader<span class="classifier">torch.utils.data.DataLoader</span></dt><dd><p>The data loader providing the training data.</p>
+</dd>
+</dl>
+</section>
+<section id="id37">
+<h4>Returns:<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>float</dt><dd><p>The average training loss over the entire dataset.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.deterministicmodel.PredictionModel.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_loader</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.deterministicmodel.PredictionModel.validate" title="Link to this definition">¶</a></dt>
+<dd><p>Evaluates the model on a validation dataset without updating model
+weights.</p>
+<section id="id38">
+<h4>Parameters:<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>criterion<span class="classifier">nn.Module</span></dt><dd><p>The loss function used to compute the loss.</p>
+</dd>
+<dt>data_loader<span class="classifier">torch.utils.data.DataLoader</span></dt><dd><p>The data loader providing the validation data.</p>
+</dd>
+</dl>
+</section>
+<section id="id39">
+<h4>Returns:<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>float</dt><dd><p>The average validation loss over the entire dataset.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="module-fireDiff.Models.cae">
+<span id="firediff-models-cae"></span><h2>fireDiff.Models.cae<a class="headerlink" href="#module-fireDiff.Models.cae" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.cae.Autoencoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.cae.</span></span><span class="sig-name descname"><span class="pre">Autoencoder</span></span><a class="headerlink" href="#fireDiff.Models.cae.Autoencoder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A convolutional autoencoder neural network for image compression and
+reconstruction.
+The autoencoder consists of an encoder that compresses the input image
+into a lower-dimensional representation and a decoder that reconstructs
+the image from this representation.</p>
+<section id="id40">
+<h3>Parameters:<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+<section id="id41">
+<h3>Returns:<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h3>
+<p>None</p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.cae.Autoencoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.cae.Autoencoder.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Defines the forward pass of the autoencoder, where the input image
+is passed through the encoder to obtain a compressed representation
+and then through the decoder to reconstruct the image.</p>
+<section id="id42">
+<h4>Parameters:<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>x<span class="classifier">torch.Tensor</span></dt><dd><p>The input tensor of shape (batch_size, 1, height, width)
+representing grayscale images.</p>
+</dd>
+</dl>
+</section>
+<section id="id43">
+<h4>Returns:<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The reconstructed image tensor of the same shape as the input.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="module-fireDiff.Models.fcae">
+<span id="firediff-models-fcae"></span><h2>fireDiff.Models.fcae<a class="headerlink" href="#module-fireDiff.Models.fcae" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Models.fcae.FullyConnectedAutoencoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Models.fcae.</span></span><span class="sig-name descname"><span class="pre">FullyConnectedAutoencoder</span></span><a class="headerlink" href="#fireDiff.Models.fcae.FullyConnectedAutoencoder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A fully connected autoencoder neural network for image compression and
+reconstruction.
+The autoencoder compresses the input image into a lower-dimensional
+representation using fully connected layers and then reconstructs the
+image from this representation.</p>
+<section id="id44">
+<h3>Parameters:<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+<section id="id45">
+<h3>Returns:<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h3>
+<p>None</p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Models.fcae.FullyConnectedAutoencoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.fcae.FullyConnectedAutoencoder.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Defines the forward pass of the fully connected autoencoder. The input
+image is first flattened, then passed through the encoder to obtain a
+compressed representation, and finally passed through the decoder to
+reconstruct the image.</p>
+<section id="id46">
+<h4>Parameters:<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>x<span class="classifier">torch.Tensor</span></dt><dd><p>The input tensor of shape (batch_size, 1, 128, 128) representing
+grayscale images.</p>
+</dd>
+</dl>
+</section>
+<section id="id47">
+<h4>Returns:<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The reconstructed image tensor of shape (batch_size, 1, 128, 128).</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="module-fireDiff.Models.utils">
+<span id="firediff-models-utils"></span><h2>fireDiff.Models.utils<a class="headerlink" href="#module-fireDiff.Models.utils" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fireDiff.Models.utils.compute_alpha_sigma">
+<span class="sig-prename descclassname"><span class="pre">fireDiff.Models.utils.</span></span><span class="sig-name descname"><span class="pre">compute_alpha_sigma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda_tau</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.utils.compute_alpha_sigma" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the alpha and sigma values used in the diffusion process from the
+given lambda values.</p>
+<section id="id48">
+<h3>Parameters:<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>lambda_tau<span class="classifier">torch.Tensor</span></dt><dd><p>A tensor containing lambda values, which are used to calculate the
+alpha and sigma values.</p>
+</dd>
+</dl>
+</section>
+<section id="id49">
+<h3>Returns:<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>tuple of torch.Tensor</dt><dd><p>A tuple containing two tensors:
+- <cite>alpha_tau</cite>: The calculated alpha values, which are used in the
+diffusion process.
+- <cite>sigma_tau</cite>: The calculated sigma values, representing the standard
+deviation of the noise added during diffusion.</p>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Link to this heading">¶</a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lambda_tau</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha_tau</span><span class="p">,</span> <span class="n">sigma_tau</span> <span class="o">=</span> <span class="n">compute_alpha_sigma</span><span class="p">(</span><span class="n">lambda_tau</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">alpha_tau</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sigma_tau</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fireDiff.Models.utils.loss_function">
+<span class="sig-prename descclassname"><span class="pre">fireDiff.Models.utils.</span></span><span class="sig-name descname"><span class="pre">loss_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_tau</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_hat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_tau</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.utils.loss_function" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the loss for training a diffusion model, considering the predicted
+and true noise.</p>
+<section id="id50">
+<h3>Parameters:<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>v_tau<span class="classifier">torch.Tensor</span></dt><dd><p>The true noise tensor used in the diffusion process.</p>
+</dd>
+<dt>v_hat<span class="classifier">torch.Tensor</span></dt><dd><p>The predicted noise tensor by the model.</p>
+</dd>
+<dt>lambda_tau<span class="classifier">torch.Tensor</span></dt><dd><p>A tensor containing lambda values for each timestep.</p>
+</dd>
+<dt>t<span class="classifier">torch.Tensor</span></dt><dd><p>A tensor of timesteps at which the loss is computed.</p>
+</dd>
+</dl>
+</section>
+<section id="id51">
+<h3>Returns:<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The computed loss value, which is used to optimize the diffusion model
+during training.</p>
+</dd>
+</dl>
+</section>
+<section id="id52">
+<h3>Example:<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v_tau</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_hat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lambda_tau</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">v_tau</span><span class="p">,</span> <span class="n">v_hat</span><span class="p">,</span> <span class="n">lambda_tau</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fireDiff.Models.utils.noise_schedule">
+<span class="sig-prename descclassname"><span class="pre">fireDiff.Models.utils.</span></span><span class="sig-name descname"><span class="pre">noise_schedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timesteps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedule_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.utils.noise_schedule" title="Link to this definition">¶</a></dt>
+<dd><p>Generate a noise schedule based on the specified type and number of
+timesteps.</p>
+<section id="id53">
+<h3>Parameters:<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>timesteps<span class="classifier">int</span></dt><dd><p>The number of timesteps for which to generate the noise schedule.</p>
+</dd>
+<dt>schedule_type<span class="classifier">str, optional</span></dt><dd><p>The type of noise schedule to generate. Supported types are ‘linear’
+and ‘cosine’.
+Default is ‘linear’.</p>
+</dd>
+</dl>
+</section>
+<section id="id54">
+<h3>Returns:<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>A tensor containing the noise schedule values for each timestep.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h3>Raises:<a class="headerlink" href="#raises" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If the <cite>schedule_type</cite> is not ‘linear’ or ‘cosine’.</p>
+</dd>
+</dl>
+</section>
+<section id="id55">
+<h3>Example:<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timesteps</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">schedule</span> <span class="o">=</span> <span class="n">noise_schedule</span><span class="p">(</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">schedule_type</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">schedule</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fireDiff.Models.utils.surrogate_target">
+<span class="sig-prename descclassname"><span class="pre">fireDiff.Models.utils.</span></span><span class="sig-name descname"><span class="pre">surrogate_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.utils.surrogate_target" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the surrogate target used in the training of diffusion models.</p>
+<section id="id56">
+<h3>Parameters:<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>x_t<span class="classifier">torch.Tensor</span></dt><dd><p>The diffused tensor at timestep <cite>t</cite>.</p>
+</dd>
+<dt>t<span class="classifier">int</span></dt><dd><p>The current timestep.</p>
+</dd>
+<dt>alpha<span class="classifier">torch.Tensor</span></dt><dd><p>A tensor containing alpha values for each timestep.</p>
+</dd>
+<dt>sigma<span class="classifier">torch.Tensor</span></dt><dd><p>A tensor containing sigma values for each timestep.</p>
+</dd>
+</dl>
+</section>
+<section id="id57">
+<h3>Returns:<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The surrogate target tensor, which is used for model training to
+approximate the noise added during diffusion.</p>
+</dd>
+</dl>
+</section>
+<section id="id58">
+<h3>Example:<a class="headerlink" href="#id58" title="Link to this heading">¶</a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sigma</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">surrogate_target</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fireDiff.Models.utils.variance_preserving_diffusion">
+<span class="sig-prename descclassname"><span class="pre">fireDiff.Models.utils.</span></span><span class="sig-name descname"><span class="pre">variance_preserving_diffusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_tau</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_tau</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Models.utils.variance_preserving_diffusion" title="Link to this definition">¶</a></dt>
+<dd><p>Apply variance-preserving diffusion to an input tensor at a specific
+timestep.</p>
+<section id="id59">
+<h3>Parameters:<a class="headerlink" href="#id59" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>x_0<span class="classifier">torch.Tensor</span></dt><dd><p>The original input tensor, representing the initial data
+(e.g., an image).</p>
+</dd>
+<dt>t<span class="classifier">int</span></dt><dd><p>The timestep at which to apply the diffusion process.</p>
+</dd>
+<dt>alpha_tau<span class="classifier">torch.Tensor</span></dt><dd><p>A tensor containing precomputed alpha values for each timestep.</p>
+</dd>
+<dt>sigma_tau<span class="classifier">torch.Tensor</span></dt><dd><p>A tensor containing precomputed sigma values for each timestep.</p>
+</dd>
+</dl>
+</section>
+<section id="id60">
+<h3>Returns:<a class="headerlink" href="#id60" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>The diffused tensor <cite>z_t</cite>, which is the result of applying the
+diffusion process to <cite>x_0</cite> at timestep <cite>t</cite>.</p>
+</dd>
+</dl>
+</section>
+<section id="id61">
+<h3>Example:<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x_0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha_tau</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sigma_tau</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z_t</span> <span class="o">=</span> <span class="n">variance_preserving_diffusion</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">alpha_tau</span><span class="p">,</span> <span class="n">sigma_tau</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">z_t</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Models</a><ul>
+<li><a class="reference internal" href="#module-fireDiff.Models.unet">fireDiff.Models.unet</a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet.Bottleneck"><code class="docutils literal notranslate"><span class="pre">Bottleneck</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet.Bottleneck.forward"><code class="docutils literal notranslate"><span class="pre">Bottleneck.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fireDiff.Models.unet.ConvBlock"><code class="docutils literal notranslate"><span class="pre">ConvBlock</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet.ConvBlock.forward"><code class="docutils literal notranslate"><span class="pre">ConvBlock.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fireDiff.Models.unet.Decoder"><code class="docutils literal notranslate"><span class="pre">Decoder</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet.Decoder.forward"><code class="docutils literal notranslate"><span class="pre">Decoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fireDiff.Models.unet.Encoder"><code class="docutils literal notranslate"><span class="pre">Encoder</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet.Encoder.forward"><code class="docutils literal notranslate"><span class="pre">Encoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fireDiff.Models.unet.UNet"><code class="docutils literal notranslate"><span class="pre">UNet</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet.UNet.forward"><code class="docutils literal notranslate"><span class="pre">UNet.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-fireDiff.Models.unet_predictor">fireDiff.Models.unet_predictor</a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.Bottleneck"><code class="docutils literal notranslate"><span class="pre">Bottleneck</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.Bottleneck.forward"><code class="docutils literal notranslate"><span class="pre">Bottleneck.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.ConvBlock"><code class="docutils literal notranslate"><span class="pre">ConvBlock</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.ConvBlock.forward"><code class="docutils literal notranslate"><span class="pre">ConvBlock.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.Decoder"><code class="docutils literal notranslate"><span class="pre">Decoder</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.Decoder.forward"><code class="docutils literal notranslate"><span class="pre">Decoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.Encoder"><code class="docutils literal notranslate"><span class="pre">Encoder</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.Encoder.forward"><code class="docutils literal notranslate"><span class="pre">Encoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.PredictorUNet"><code class="docutils literal notranslate"><span class="pre">PredictorUNet</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.unet_predictor.PredictorUNet.forward"><code class="docutils literal notranslate"><span class="pre">PredictorUNet.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-fireDiff.Models.diffusionmodel">fireDiff.Models.diffusionmodel</a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.diffusionmodel.DiffusionModel"><code class="docutils literal notranslate"><span class="pre">DiffusionModel</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.diffusionmodel.DiffusionModel.heun_sampler"><code class="docutils literal notranslate"><span class="pre">DiffusionModel.heun_sampler()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.diffusionmodel.DiffusionModel.load_model"><code class="docutils literal notranslate"><span class="pre">DiffusionModel.load_model()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.diffusionmodel.DiffusionModel.save_model"><code class="docutils literal notranslate"><span class="pre">DiffusionModel.save_model()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.diffusionmodel.DiffusionModel.train_model"><code class="docutils literal notranslate"><span class="pre">DiffusionModel.train_model()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fireDiff.Models.deterministicmodel.PredictionModel"><code class="docutils literal notranslate"><span class="pre">PredictionModel</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.deterministicmodel.PredictionModel.load_model"><code class="docutils literal notranslate"><span class="pre">PredictionModel.load_model()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.deterministicmodel.PredictionModel.save_model"><code class="docutils literal notranslate"><span class="pre">PredictionModel.save_model()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.deterministicmodel.PredictionModel.train_model"><code class="docutils literal notranslate"><span class="pre">PredictionModel.train_model()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.deterministicmodel.PredictionModel.train_step"><code class="docutils literal notranslate"><span class="pre">PredictionModel.train_step()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.deterministicmodel.PredictionModel.validate"><code class="docutils literal notranslate"><span class="pre">PredictionModel.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-fireDiff.Models.cae">fireDiff.Models.cae</a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.cae.Autoencoder"><code class="docutils literal notranslate"><span class="pre">Autoencoder</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.cae.Autoencoder.forward"><code class="docutils literal notranslate"><span class="pre">Autoencoder.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-fireDiff.Models.fcae">fireDiff.Models.fcae</a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.fcae.FullyConnectedAutoencoder"><code class="docutils literal notranslate"><span class="pre">FullyConnectedAutoencoder</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.fcae.FullyConnectedAutoencoder.forward"><code class="docutils literal notranslate"><span class="pre">FullyConnectedAutoencoder.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-fireDiff.Models.utils">fireDiff.Models.utils</a><ul>
+<li><a class="reference internal" href="#fireDiff.Models.utils.compute_alpha_sigma"><code class="docutils literal notranslate"><span class="pre">compute_alpha_sigma()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.utils.loss_function"><code class="docutils literal notranslate"><span class="pre">loss_function()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.utils.noise_schedule"><code class="docutils literal notranslate"><span class="pre">noise_schedule()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.utils.surrogate_target"><code class="docutils literal notranslate"><span class="pre">surrogate_target()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Models.utils.variance_preserving_diffusion"><code class="docutils literal notranslate"><span class="pre">variance_preserving_diffusion()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Function API</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="datasets.html"
+                          title="next chapter">Datasets</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/models.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="datasets.html" title="Datasets"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Function API"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Fire Diff 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Models</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright .
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

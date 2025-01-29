@@ -1,0 +1,66 @@
+\indexentry{module@\spxentry{module}!fireDiff.Models.unet@\spxentry{fireDiff.Models.unet}|hyperpage}{1}
+\indexentry{fireDiff.Models.unet@\spxentry{fireDiff.Models.unet}!module@\spxentry{module}|hyperpage}{1}
+\indexentry{Bottleneck (class in fireDiff.Models.unet)@\spxentry{Bottleneck}\spxextra{class in fireDiff.Models.unet}|hyperpage}{1}
+\indexentry{forward() (fireDiff.Models.unet.Bottleneck method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet.Bottleneck method}|hyperpage}{1}
+\indexentry{ConvBlock (class in fireDiff.Models.unet)@\spxentry{ConvBlock}\spxextra{class in fireDiff.Models.unet}|hyperpage}{1}
+\indexentry{forward() (fireDiff.Models.unet.ConvBlock method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet.ConvBlock method}|hyperpage}{2}
+\indexentry{Decoder (class in fireDiff.Models.unet)@\spxentry{Decoder}\spxextra{class in fireDiff.Models.unet}|hyperpage}{2}
+\indexentry{forward() (fireDiff.Models.unet.Decoder method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet.Decoder method}|hyperpage}{2}
+\indexentry{Encoder (class in fireDiff.Models.unet)@\spxentry{Encoder}\spxextra{class in fireDiff.Models.unet}|hyperpage}{3}
+\indexentry{forward() (fireDiff.Models.unet.Encoder method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet.Encoder method}|hyperpage}{3}
+\indexentry{UNet (class in fireDiff.Models.unet)@\spxentry{UNet}\spxextra{class in fireDiff.Models.unet}|hyperpage}{3}
+\indexentry{forward() (fireDiff.Models.unet.UNet method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet.UNet method}|hyperpage}{4}
+\indexentry{module@\spxentry{module}!fireDiff.Models.unet\_predictor@\spxentry{fireDiff.Models.unet\_predictor}|hyperpage}{4}
+\indexentry{fireDiff.Models.unet\_predictor@\spxentry{fireDiff.Models.unet\_predictor}!module@\spxentry{module}|hyperpage}{4}
+\indexentry{Bottleneck (class in fireDiff.Models.unet\_predictor)@\spxentry{Bottleneck}\spxextra{class in fireDiff.Models.unet\_predictor}|hyperpage}{4}
+\indexentry{forward() (fireDiff.Models.unet\_predictor.Bottleneck method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.Bottleneck method}|hyperpage}{4}
+\indexentry{ConvBlock (class in fireDiff.Models.unet\_predictor)@\spxentry{ConvBlock}\spxextra{class in fireDiff.Models.unet\_predictor}|hyperpage}{4}
+\indexentry{forward() (fireDiff.Models.unet\_predictor.ConvBlock method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.ConvBlock method}|hyperpage}{5}
+\indexentry{Decoder (class in fireDiff.Models.unet\_predictor)@\spxentry{Decoder}\spxextra{class in fireDiff.Models.unet\_predictor}|hyperpage}{5}
+\indexentry{forward() (fireDiff.Models.unet\_predictor.Decoder method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.Decoder method}|hyperpage}{5}
+\indexentry{Encoder (class in fireDiff.Models.unet\_predictor)@\spxentry{Encoder}\spxextra{class in fireDiff.Models.unet\_predictor}|hyperpage}{5}
+\indexentry{forward() (fireDiff.Models.unet\_predictor.Encoder method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.Encoder method}|hyperpage}{5}
+\indexentry{PredictorUNet (class in fireDiff.Models.unet\_predictor)@\spxentry{PredictorUNet}\spxextra{class in fireDiff.Models.unet\_predictor}|hyperpage}{5}
+\indexentry{forward() (fireDiff.Models.unet\_predictor.PredictorUNet method)@\spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.PredictorUNet method}|hyperpage}{5}
+\indexentry{module@\spxentry{module}!fireDiff.Models.diffusionmodel@\spxentry{fireDiff.Models.diffusionmodel}|hyperpage}{6}
+\indexentry{fireDiff.Models.diffusionmodel@\spxentry{fireDiff.Models.diffusionmodel}!module@\spxentry{module}|hyperpage}{6}
+\indexentry{DiffusionModel (class in fireDiff.Models.diffusionmodel)@\spxentry{DiffusionModel}\spxextra{class in fireDiff.Models.diffusionmodel}|hyperpage}{6}
+\indexentry{diffusion\_sampler() (fireDiff.Models.diffusionmodel.DiffusionModel method)@\spxentry{diffusion\_sampler()}\spxextra{fireDiff.Models.diffusionmodel.DiffusionModel method}|hyperpage}{6}
+\indexentry{load\_model() (fireDiff.Models.diffusionmodel.DiffusionModel method)@\spxentry{load\_model()}\spxextra{fireDiff.Models.diffusionmodel.DiffusionModel method}|hyperpage}{7}
+\indexentry{save\_model() (fireDiff.Models.diffusionmodel.DiffusionModel method)@\spxentry{save\_model()}\spxextra{fireDiff.Models.diffusionmodel.DiffusionModel method}|hyperpage}{7}
+\indexentry{train\_model() (fireDiff.Models.diffusionmodel.DiffusionModel method)@\spxentry{train\_model()}\spxextra{fireDiff.Models.diffusionmodel.DiffusionModel method}|hyperpage}{7}
+\indexentry{module@\spxentry{module}!fireDiff.Models.deterministicmodel@\spxentry{fireDiff.Models.deterministicmodel}|hyperpage}{7}
+\indexentry{fireDiff.Models.deterministicmodel@\spxentry{fireDiff.Models.deterministicmodel}!module@\spxentry{module}|hyperpage}{7}
+\indexentry{PredictionModel (class in fireDiff.Models.deterministicmodel)@\spxentry{PredictionModel}\spxextra{class in fireDiff.Models.deterministicmodel}|hyperpage}{7}
+\indexentry{load\_model() (fireDiff.Models.deterministicmodel.PredictionModel method)@\spxentry{load\_model()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}|hyperpage}{8}
+\indexentry{save\_model() (fireDiff.Models.deterministicmodel.PredictionModel method)@\spxentry{save\_model()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}|hyperpage}{8}
+\indexentry{train\_model() (fireDiff.Models.deterministicmodel.PredictionModel method)@\spxentry{train\_model()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}|hyperpage}{8}
+\indexentry{train\_step() (fireDiff.Models.deterministicmodel.PredictionModel method)@\spxentry{train\_step()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}|hyperpage}{9}
+\indexentry{validate() (fireDiff.Models.deterministicmodel.PredictionModel method)@\spxentry{validate()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}|hyperpage}{9}
+\indexentry{module@\spxentry{module}!fireDiff.Models.cae@\spxentry{fireDiff.Models.cae}|hyperpage}{9}
+\indexentry{fireDiff.Models.cae@\spxentry{fireDiff.Models.cae}!module@\spxentry{module}|hyperpage}{9}
+\indexentry{Autoencoder (class in fireDiff.Models.cae)@\spxentry{Autoencoder}\spxextra{class in fireDiff.Models.cae}|hyperpage}{9}
+\indexentry{forward() (fireDiff.Models.cae.Autoencoder method)@\spxentry{forward()}\spxextra{fireDiff.Models.cae.Autoencoder method}|hyperpage}{10}
+\indexentry{module@\spxentry{module}!fireDiff.Models.fcae@\spxentry{fireDiff.Models.fcae}|hyperpage}{10}
+\indexentry{fireDiff.Models.fcae@\spxentry{fireDiff.Models.fcae}!module@\spxentry{module}|hyperpage}{10}
+\indexentry{FullyConnectedAutoencoder (class in fireDiff.Models.fcae)@\spxentry{FullyConnectedAutoencoder}\spxextra{class in fireDiff.Models.fcae}|hyperpage}{10}
+\indexentry{forward() (fireDiff.Models.fcae.FullyConnectedAutoencoder method)@\spxentry{forward()}\spxextra{fireDiff.Models.fcae.FullyConnectedAutoencoder method}|hyperpage}{10}
+\indexentry{module@\spxentry{module}!fireDiff.Models.utils@\spxentry{fireDiff.Models.utils}|hyperpage}{11}
+\indexentry{fireDiff.Models.utils@\spxentry{fireDiff.Models.utils}!module@\spxentry{module}|hyperpage}{11}
+\indexentry{compute\_alpha\_sigma() (in module fireDiff.Models.utils)@\spxentry{compute\_alpha\_sigma()}\spxextra{in module fireDiff.Models.utils}|hyperpage}{11}
+\indexentry{loss\_function() (in module fireDiff.Models.utils)@\spxentry{loss\_function()}\spxextra{in module fireDiff.Models.utils}|hyperpage}{11}
+\indexentry{noise\_schedule() (in module fireDiff.Models.utils)@\spxentry{noise\_schedule()}\spxextra{in module fireDiff.Models.utils}|hyperpage}{12}
+\indexentry{surrogate\_target() (in module fireDiff.Models.utils)@\spxentry{surrogate\_target()}\spxextra{in module fireDiff.Models.utils}|hyperpage}{12}
+\indexentry{variance\_preserving\_diffusion() (in module fireDiff.Models.utils)@\spxentry{variance\_preserving\_diffusion()}\spxextra{in module fireDiff.Models.utils}|hyperpage}{13}
+\indexentry{module@\spxentry{module}!fireDiff.Datasets.pairdataset@\spxentry{fireDiff.Datasets.pairdataset}|hyperpage}{15}
+\indexentry{fireDiff.Datasets.pairdataset@\spxentry{fireDiff.Datasets.pairdataset}!module@\spxentry{module}|hyperpage}{15}
+\indexentry{VideoFramePairsDataset (class in fireDiff.Datasets.pairdataset)@\spxentry{VideoFramePairsDataset}\spxextra{class in fireDiff.Datasets.pairdataset}|hyperpage}{15}
+\indexentry{module@\spxentry{module}!fireDiff.Datasets.videodataset@\spxentry{fireDiff.Datasets.videodataset}|hyperpage}{16}
+\indexentry{fireDiff.Datasets.videodataset@\spxentry{fireDiff.Datasets.videodataset}!module@\spxentry{module}|hyperpage}{16}
+\indexentry{VideoDataset (class in fireDiff.Datasets.videodataset)@\spxentry{VideoDataset}\spxextra{class in fireDiff.Datasets.videodataset}|hyperpage}{16}
+\indexentry{load\_video() (fireDiff.Datasets.videodataset.VideoDataset method)@\spxentry{load\_video()}\spxextra{fireDiff.Datasets.videodataset.VideoDataset method}|hyperpage}{16}
+\indexentry{load\_videos() (fireDiff.Datasets.videodataset.VideoDataset method)@\spxentry{load\_videos()}\spxextra{fireDiff.Datasets.videodataset.VideoDataset method}|hyperpage}{16}
+\indexentry{module@\spxentry{module}!fireDiff.Utils.utilities@\spxentry{fireDiff.Utils.utilities}|hyperpage}{19}
+\indexentry{fireDiff.Utils.utilities@\spxentry{fireDiff.Utils.utilities}!module@\spxentry{module}|hyperpage}{19}
+\indexentry{calculate\_matching\_percentage() (in module fireDiff.Utils.utilities)@\spxentry{calculate\_matching\_percentage()}\spxextra{in module fireDiff.Utils.utilities}|hyperpage}{19}
+\indexentry{threshold() (in module fireDiff.Utils.utilities)@\spxentry{threshold()}\spxextra{in module fireDiff.Utils.utilities}|hyperpage}{19}

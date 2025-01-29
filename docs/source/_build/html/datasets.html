@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Datasets &#8212; Fire Diff 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4848ba22" />
+    <link rel="stylesheet" type="text/css" href="_static/pyramid.css?v=310c80ee" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Utilities" href="utils.html" />
+    <link rel="prev" title="Models" href="models.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="Utilities"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Models"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Fire Diff 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Datasets</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="datasets">
+<h1>Datasets<a class="headerlink" href="#datasets" title="Link to this heading">¶</a></h1>
+<section id="module-fireDiff.Datasets.pairdataset">
+<span id="firediff-datasets-pairdataset"></span><h2>fireDiff.Datasets.pairdataset<a class="headerlink" href="#module-fireDiff.Datasets.pairdataset" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Datasets.pairdataset.VideoFramePairsDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Datasets.pairdataset.</span></span><span class="sig-name descname"><span class="pre">VideoFramePairsDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timegap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Datasets.pairdataset.VideoFramePairsDataset" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></p>
+<p>A dataset class for creating pairs of grayscale video frames from a
+directory of video files.</p>
+<section id="attributes">
+<h3>Attributes:<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>video_dir<span class="classifier">str</span></dt><dd><p>The directory containing the video files.</p>
+</dd>
+<dt>transform<span class="classifier">callable, optional</span></dt><dd><p>A function/transform to apply to the video frames.</p>
+</dd>
+<dt>timegap<span class="classifier">int, optional</span></dt><dd><p>The gap between consecutive frames in a pair, default is 1.</p>
+</dd>
+<dt>video_files<span class="classifier">list of str</span></dt><dd><p>A list of paths to the video files in the directory.</p>
+</dd>
+<dt>frame_pairs<span class="classifier">list of tuples</span></dt><dd><p>A list of tuples, where each tuple contains two consecutive frames
+with a time gap.</p>
+</dd>
+</dl>
+<p>Initializes the VideoFramePairsDataset.</p>
+</section>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>video_dir<span class="classifier">str</span></dt><dd><p>The directory containing the video files.</p>
+</dd>
+<dt>transform<span class="classifier">callable, optional</span></dt><dd><p>A function/transform to apply to the video frames.</p>
+</dd>
+<dt>timegap<span class="classifier">int, optional</span></dt><dd><p>The gap between consecutive frames in a pair, default is 1.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-fireDiff.Datasets.videodataset">
+<span id="firediff-datasets-videodataset"></span><h2>fireDiff.Datasets.videodataset<a class="headerlink" href="#module-fireDiff.Datasets.videodataset" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fireDiff.Datasets.videodataset.VideoDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fireDiff.Datasets.videodataset.</span></span><span class="sig-name descname"><span class="pre">VideoDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_videos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_frames_per_video</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Datasets.videodataset.VideoDataset" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></p>
+<p>A PyTorch Dataset class for loading frames from multiple videos stored in
+a folder. The frames are converted to grayscale and can be optionally
+transformed.</p>
+<section id="id1">
+<h3>Parameters:<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>video_folder<span class="classifier">str</span></dt><dd><p>The directory containing the video files.</p>
+</dd>
+<dt>num_videos<span class="classifier">int</span></dt><dd><p>The number of videos to load from the folder.</p>
+</dd>
+<dt>num_frames_per_video<span class="classifier">int</span></dt><dd><p>The number of frames to load from each video.</p>
+</dd>
+<dt>frame_size<span class="classifier">tuple</span></dt><dd><p>The desired frame size (height, width) for the loaded frames.</p>
+</dd>
+<dt>transform<span class="classifier">callable, optional, default=None</span></dt><dd><p>A function/transform that takes in a frame and returns a transformed
+version.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns:<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<p>None</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Datasets.videodataset.VideoDataset.load_video">
+<span class="sig-name descname"><span class="pre">load_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Datasets.videodataset.VideoDataset.load_video" title="Link to this definition">¶</a></dt>
+<dd><p>Loads a single video from the specified path, converts its frames to
+grayscale, and resizes them to the specified frame size.</p>
+<section id="id2">
+<h4>Parameters:<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>video_path<span class="classifier">str</span></dt><dd><p>The path to the video file to be loaded.</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h4>Returns:<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>np.ndarray</dt><dd><p>An array of grayscale frames from the video.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fireDiff.Datasets.videodataset.VideoDataset.load_videos">
+<span class="sig-name descname"><span class="pre">load_videos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fireDiff.Datasets.videodataset.VideoDataset.load_videos" title="Link to this definition">¶</a></dt>
+<dd><p>Loads frames from multiple videos in the specified folder. Each video
+is loaded, converted to grayscale, resized, and a specified number of
+frames are selected.</p>
+<section id="id4">
+<h4>Returns:<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list</dt><dd><p>A list containing all the loaded and processed frames from all
+videos.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Datasets</a><ul>
+<li><a class="reference internal" href="#module-fireDiff.Datasets.pairdataset">fireDiff.Datasets.pairdataset</a><ul>
+<li><a class="reference internal" href="#fireDiff.Datasets.pairdataset.VideoFramePairsDataset"><code class="docutils literal notranslate"><span class="pre">VideoFramePairsDataset</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-fireDiff.Datasets.videodataset">fireDiff.Datasets.videodataset</a><ul>
+<li><a class="reference internal" href="#fireDiff.Datasets.videodataset.VideoDataset"><code class="docutils literal notranslate"><span class="pre">VideoDataset</span></code></a><ul>
+<li><a class="reference internal" href="#fireDiff.Datasets.videodataset.VideoDataset.load_video"><code class="docutils literal notranslate"><span class="pre">VideoDataset.load_video()</span></code></a></li>
+<li><a class="reference internal" href="#fireDiff.Datasets.videodataset.VideoDataset.load_videos"><code class="docutils literal notranslate"><span class="pre">VideoDataset.load_videos()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="models.html"
+                          title="previous chapter">Models</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="utils.html"
+                          title="next chapter">Utilities</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/datasets.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="Utilities"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Models"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Fire Diff 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Datasets</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright .
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

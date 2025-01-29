@@ -1,0 +1,148 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry{Autoencoder}\spxextra{class in fireDiff.Models.cae}, \hyperpage{9}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry{Bottleneck}\spxextra{class in fireDiff.Models.unet}, \hyperpage{1}
+  \item \spxentry{Bottleneck}\spxextra{class in fireDiff.Models.unet\_predictor}, \hyperpage{4}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{calculate\_matching\_percentage()}\spxextra{in module fireDiff.Utils.utilities}, 
+		\hyperpage{19}
+  \item \spxentry{compute\_alpha\_sigma()}\spxextra{in module fireDiff.Models.utils}, 
+		\hyperpage{11}
+  \item \spxentry{ConvBlock}\spxextra{class in fireDiff.Models.unet}, \hyperpage{1}
+  \item \spxentry{ConvBlock}\spxextra{class in fireDiff.Models.unet\_predictor}, \hyperpage{4}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{Decoder}\spxextra{class in fireDiff.Models.unet}, \hyperpage{2}
+  \item \spxentry{Decoder}\spxextra{class in fireDiff.Models.unet\_predictor}, \hyperpage{5}
+  \item \spxentry{diffusion\_sampler()}\spxextra{fireDiff.Models.diffusionmodel.DiffusionModel method}, 
+		\hyperpage{6}
+  \item \spxentry{DiffusionModel}\spxextra{class in fireDiff.Models.diffusionmodel}, \hyperpage{6}
+
+  \indexspace
+  \bigletter E
+  \item \spxentry{Encoder}\spxextra{class in fireDiff.Models.unet}, \hyperpage{3}
+  \item \spxentry{Encoder}\spxextra{class in fireDiff.Models.unet\_predictor}, \hyperpage{5}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{fireDiff.Datasets.pairdataset}
+    \subitem \spxentry{module}, \hyperpage{15}
+  \item \spxentry{fireDiff.Datasets.videodataset}
+    \subitem \spxentry{module}, \hyperpage{16}
+  \item \spxentry{fireDiff.Models.cae}
+    \subitem \spxentry{module}, \hyperpage{9}
+  \item \spxentry{fireDiff.Models.deterministicmodel}
+    \subitem \spxentry{module}, \hyperpage{7}
+  \item \spxentry{fireDiff.Models.diffusionmodel}
+    \subitem \spxentry{module}, \hyperpage{6}
+  \item \spxentry{fireDiff.Models.fcae}
+    \subitem \spxentry{module}, \hyperpage{10}
+  \item \spxentry{fireDiff.Models.unet}
+    \subitem \spxentry{module}, \hyperpage{1}
+  \item \spxentry{fireDiff.Models.unet\_predictor}
+    \subitem \spxentry{module}, \hyperpage{4}
+  \item \spxentry{fireDiff.Models.utils}
+    \subitem \spxentry{module}, \hyperpage{11}
+  \item \spxentry{fireDiff.Utils.utilities}
+    \subitem \spxentry{module}, \hyperpage{19}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.cae.Autoencoder method}, \hyperpage{10}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.fcae.FullyConnectedAutoencoder method}, 
+		\hyperpage{10}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet.Bottleneck method}, \hyperpage{1}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet.ConvBlock method}, \hyperpage{2}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet.Decoder method}, \hyperpage{2}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet.Encoder method}, \hyperpage{3}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet.UNet method}, \hyperpage{4}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.Bottleneck method}, 
+		\hyperpage{4}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.ConvBlock method}, 
+		\hyperpage{5}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.Decoder method}, 
+		\hyperpage{5}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.Encoder method}, 
+		\hyperpage{5}
+  \item \spxentry{forward()}\spxextra{fireDiff.Models.unet\_predictor.PredictorUNet method}, 
+		\hyperpage{5}
+  \item \spxentry{FullyConnectedAutoencoder}\spxextra{class in fireDiff.Models.fcae}, 
+		\hyperpage{10}
+
+  \indexspace
+  \bigletter L
+  \item \spxentry{load\_model()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}, 
+		\hyperpage{8}
+  \item \spxentry{load\_model()}\spxextra{fireDiff.Models.diffusionmodel.DiffusionModel method}, 
+		\hyperpage{7}
+  \item \spxentry{load\_video()}\spxextra{fireDiff.Datasets.videodataset.VideoDataset method}, 
+		\hyperpage{16}
+  \item \spxentry{load\_videos()}\spxextra{fireDiff.Datasets.videodataset.VideoDataset method}, 
+		\hyperpage{16}
+  \item \spxentry{loss\_function()}\spxextra{in module fireDiff.Models.utils}, \hyperpage{11}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{module}
+    \subitem \spxentry{fireDiff.Datasets.pairdataset}, \hyperpage{15}
+    \subitem \spxentry{fireDiff.Datasets.videodataset}, \hyperpage{16}
+    \subitem \spxentry{fireDiff.Models.cae}, \hyperpage{9}
+    \subitem \spxentry{fireDiff.Models.deterministicmodel}, \hyperpage{7}
+    \subitem \spxentry{fireDiff.Models.diffusionmodel}, \hyperpage{6}
+    \subitem \spxentry{fireDiff.Models.fcae}, \hyperpage{10}
+    \subitem \spxentry{fireDiff.Models.unet}, \hyperpage{1}
+    \subitem \spxentry{fireDiff.Models.unet\_predictor}, \hyperpage{4}
+    \subitem \spxentry{fireDiff.Models.utils}, \hyperpage{11}
+    \subitem \spxentry{fireDiff.Utils.utilities}, \hyperpage{19}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{noise\_schedule()}\spxextra{in module fireDiff.Models.utils}, \hyperpage{12}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{PredictionModel}\spxextra{class in fireDiff.Models.deterministicmodel}, 
+		\hyperpage{7}
+  \item \spxentry{PredictorUNet}\spxextra{class in fireDiff.Models.unet\_predictor}, \hyperpage{5}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{save\_model()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}, 
+		\hyperpage{8}
+  \item \spxentry{save\_model()}\spxextra{fireDiff.Models.diffusionmodel.DiffusionModel method}, 
+		\hyperpage{7}
+  \item \spxentry{surrogate\_target()}\spxextra{in module fireDiff.Models.utils}, \hyperpage{12}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{threshold()}\spxextra{in module fireDiff.Utils.utilities}, \hyperpage{19}
+  \item \spxentry{train\_model()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}, 
+		\hyperpage{8}
+  \item \spxentry{train\_model()}\spxextra{fireDiff.Models.diffusionmodel.DiffusionModel method}, 
+		\hyperpage{7}
+  \item \spxentry{train\_step()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}, 
+		\hyperpage{9}
+
+  \indexspace
+  \bigletter U
+  \item \spxentry{UNet}\spxextra{class in fireDiff.Models.unet}, \hyperpage{3}
+
+  \indexspace
+  \bigletter V
+  \item \spxentry{validate()}\spxextra{fireDiff.Models.deterministicmodel.PredictionModel method}, 
+		\hyperpage{9}
+  \item \spxentry{variance\_preserving\_diffusion()}\spxextra{in module fireDiff.Models.utils}, 
+		\hyperpage{13}
+  \item \spxentry{VideoDataset}\spxextra{class in fireDiff.Datasets.videodataset}, \hyperpage{16}
+  \item \spxentry{VideoFramePairsDataset}\spxextra{class in fireDiff.Datasets.pairdataset}, 
+		\hyperpage{15}
+
+\end{sphinxtheindex}

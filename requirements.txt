@@ -1,0 +1,11 @@
+numpy
+torch
+matplotlib
+scikit-learn
+torchvision
+opencv-python
+pytest
+sphinx
+pytorch_msssim
+piq
+flake8

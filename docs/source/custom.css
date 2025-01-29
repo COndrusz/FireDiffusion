@@ -1,0 +1,22 @@
+/* Adjust the width of the sidebar containing the ToC */
+.wy-side-nav-search {
+    width: 350px;  /* Set your desired width */
+}
+
+.wy-nav-side {
+    width: 350px;  /* Set the same width as above */
+}
+
+/* Adjust the content area to accommodate the new ToC width */
+.wy-nav-content-wrap {
+    margin-left: 370px; /* Adjust this to be slightly more than the ToC width */
+}
+/* Adjust the font size of the ToC items */
+.wy-menu-vertical a {
+    font-size: 11px;  /* Set your desired font size */
+}
+
+/* Adjust the font size of nested ToC items */
+.wy-menu-vertical ul a {
+    font-size: 10px;  /* Slightly smaller for nested items */
+}
