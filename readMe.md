@@ -77,7 +77,7 @@ Below is a short description of folders two layers deep. Please look inside of f
 Follow these steps to install:
 
 1. ```git clone https://github.com/ese-msc-2023/irp-cro23/tree/main/```
-2. ```cd ./deliverables/FireDiff```
+2. ```cd ./FireDiffusion```
 3. ```pip install -r requirements.txt```
 4. ```pip install -e .```
 
